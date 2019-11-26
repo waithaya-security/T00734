@@ -1,0 +1,22 @@
+<p-table [value]="orderService.orderList">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ชื่อ - นามสกุล</th>
+            <th>ชื่อสินค้า</th>
+            <th>รายละเอียดสินค้า</th>
+            <th>อีเมล์</th>
+            <th>เบอร์โทร</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+        <tr style="text-align: center;">
+            <td>{{order.customer['fullName']}}</td>
+            <td>{{order.product['productName']}}</td>
+            <td>{{order.product['productDesc']}}</td>
+            <td>{{order.customer['email']}}</td>
+            <td>{{order.customer['tel']}}</td>
+            <td><button pButton type="button" icon="pi pi-pencil" (click)="onEdit(order)"></button>&nbsp;<button pButton type="button" icon="pi pi-trash"></button></td>
+        </tr>
+    </ng-template>
+</p-table>

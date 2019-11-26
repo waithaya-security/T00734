@@ -1,0 +1,49 @@
+<form [formGroup]="searchForm">
+    <div class="p-grid p-justify-center">
+        <div class="p-col-12 p-md-6 p-lg-3" style="text-align: right;">
+            First Name:
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <input type="text" pInputText formControlName="firstName">
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3" style="text-align: right;">
+            Last Name:
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <input type="text" pInputText formControlName="lastName">
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+
+        </div>
+    </div>
+    <div class="p-grid p-justify-center">
+        <div class="p-col-12 p-md-6 p-lg-3" style="text-align: right;">
+            Email:
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <input type="text" pInputText formControlName="email">
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3" style="text-align: right;">
+            Product:
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <p-dropdown optionLabel="productName" [showClear]="true" placeholder="Select Product"
+                [options]="productService.productList" formControlName="productId"></p-dropdown>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+
+        </div>
+    </div>
+    <div class="p-grid p-justify-center">
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <p-button label="ค้นหา" (click)="searchBtn()"></p-button>&nbsp;
+            <p-button label="ยกเลิก" (click)="cancelBtn()"></p-button>&nbsp;
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12" style="text-align: right;">
+            <p-button icon="pi pi-plus-circle" label="เพิ่ม" [routerLink]="['/add']"></p-button>
+        </div>
+    </div>
+</form>
+<app-order-list></app-order-list>

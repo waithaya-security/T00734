@@ -1,0 +1,85 @@
+<form [formGroup]="addEditForm">
+    <div class="p-grid">
+        <div class="p-col">
+            <div style="text-align: right;">
+                Order Date:
+            </div>
+        </div>
+        <div class="p-col">
+            <div style="text-align: left;">
+                <p-calendar [showIcon]="true" formControlName="orderDate"></p-calendar>&nbsp;
+                <p-message severity="error" text="Order Date is required" *ngIf="addEditForm.get('orderDate').hasError('required')"></p-message>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <div style="text-align: right;">
+                Product:
+            </div>
+        </div>
+        <div class="p-col">
+            <div style="text-align: left;">
+                <p-dropdown formControlName="productId" [options]="productService.productList" optionLabel="productName" placeholder="Select Product"></p-dropdown>&nbsp;
+                <p-message severity="error" text="Product is required" *ngIf="addEditForm.get('productId').hasError('required')"></p-message>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <div style="text-align: right;">
+                Customer:
+            </div>
+        </div>
+        <div class="p-col">
+            <div style="text-align: left;">
+                <p-dropdown formControlName="customerId" [options]="customerService.customerList" optionLabel="fullName" placeholder="Select Customer"></p-dropdown>&nbsp;
+                <p-message severity="error" text="Customer is required" *ngIf="addEditForm.get('customerId').hasError('required')"></p-message>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <div style="text-align: right;">
+                Amount:
+            </div>
+        </div>
+        <div class="p-col">
+            <div style="text-align: left;">
+                <input type="text" pInputText formControlName="amount"/>&nbsp;
+                <p-message severity="error" text="Amount is required" *ngIf="addEditForm.get('amount').hasError('required')"></p-message>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <div style="text-align: right;">
+                Total:
+            </div>
+        </div>
+        <div class="p-col">
+            <div style="text-align: left;">
+                <input type="text" pInputText />
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <div style="text-align: right;">
+                Status:
+            </div>
+        </div>
+        <div class="p-col">
+            <div style="text-align: left;">
+                <p-inputSwitch></p-inputSwitch>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12" style="text-align: center;">
+            <p-button label="บันทึก" (click)="submitBtn()"></p-button>&nbsp;
+            <p-button label="ยกเลิก" (click)="cancelBtn()"></p-button>&nbsp;
+            <p-button label="กลับ" [routerLink]="['/']"></p-button>
+        </div>
+    </div>
+</form>
