@@ -7,6 +7,7 @@ import { SearchModule } from './component/search/search.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditModule } from './component/add-edit/add-edit.module';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AddEditModule } from './component/add-edit/add-edit.module';
     HttpClientModule,
     AddEditModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

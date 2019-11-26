@@ -9,7 +9,7 @@ import { OrderListComponent } from '../order-list/order-list.component';
 import { TableModule } from 'primeng/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { RouterModule } from '@angular/router';
     DropdownModule,
     TableModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    ToastModule
   ],
   exports: [SearchComponent]
 })

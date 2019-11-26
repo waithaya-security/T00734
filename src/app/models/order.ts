@@ -7,6 +7,6 @@ export interface Order {
     total: number;
     orderDate: Date;
     status: string;
-    costomer: Customer;
+    customer: Customer;
     product: Product;
 }

@@ -25,7 +25,7 @@ import { MessageModule } from 'primeng/message';
     ReactiveFormsModule,
     RouterModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
   ]
 })
 export class AddEditModule { }

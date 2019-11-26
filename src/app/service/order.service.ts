@@ -8,7 +8,8 @@ import { tap } from 'rxjs/operators';
 })
 export class OrderService {
   orderList: Order[] = [];
-
+  orderSelected: Order;
+  delRespont: any;
   constructor(private http: HttpClient) { }
 
   removeEmpty(obj) {
@@ -25,6 +26,16 @@ export class OrderService {
       .pipe(
         tap(response => {
           this.orderList = response;
+        })
+      );
+  }
+
+  delOrder(id) {
+    return this.http
+      .delete<any>('workshop-api/api/orders/' + id)
+      .pipe(
+        tap(response => {
+          this.delRespont = response;
         })
       );
   }

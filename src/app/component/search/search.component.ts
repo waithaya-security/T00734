@@ -49,4 +49,8 @@ export class SearchComponent implements OnInit {
     this.orderService.orderList = [];
   }
 
+  onAdd() {
+    this.orderService.orderSelected = null;
+  }
+
 }
