@@ -23,9 +23,8 @@
         <div class="p-col">
             <div style="text-align: left;">
                 <p-dropdown [options]="productService.productList" optionLabel="productName" [(ngModel)]="product"
-                [ngModelOptions]="{standalone: true}" placeholder="Select Product"></p-dropdown>&nbsp;
-                <p-message severity="error" text="Product is required"
-                    *ngIf="!product"></p-message>
+                    [ngModelOptions]="{standalone: true}" placeholder="Select Product"></p-dropdown>&nbsp;
+                <p-message severity="error" text="Product is required" *ngIf="!product"></p-message>
             </div>
         </div>
     </div>
@@ -52,9 +51,8 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <input type="text" pInputText [(ngModel)]="amount" [ngModelOptions]="{standalone: true}"/>&nbsp;
-                <p-message severity="error" text="Amount is required"
-                    *ngIf="!amount"></p-message>
+                <input type="text" pInputText [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" />&nbsp;
+                <p-message severity="error" text="Amount is required" *ngIf="!amount"></p-message>
             </div>
         </div>
     </div>
@@ -66,7 +64,8 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <input type="text" pInputText disabled="true" [(ngModel)]="product?.price * amount" [ngModelOptions]="{standalone: true}"/>
+                <input type="text" pInputText disabled="true" [(ngModel)]="product?.price * amount"
+                    [ngModelOptions]="{standalone: true}" />
             </div>
         </div>
     </div>

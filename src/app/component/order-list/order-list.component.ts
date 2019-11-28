@@ -34,7 +34,7 @@ export class OrderListComponent implements OnInit {
         this.messageService.add({ severity: 'warn', summary: 'Message', detail: 'Error, Can\'t Delete.' });
       }
     });
-    this.orderService.orderList.splice(index,1);
+    this.orderService.orderList.splice(index, 1);
   }
 
 }
