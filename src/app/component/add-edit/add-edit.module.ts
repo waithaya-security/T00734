@@ -6,11 +6,13 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, NgControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ToastModule } from 'primeng/toast';
     MessagesModule,
     MessageModule,
     ToastModule,
-  ]
+    FormsModule
+  ],
+  providers: []
 })
 export class AddEditModule { }

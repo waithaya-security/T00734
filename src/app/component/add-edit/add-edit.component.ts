@@ -18,8 +18,6 @@ export class AddEditComponent implements OnInit {
   addEditForm: FormGroup;
   orderSelected: Order;
   today = new Date();
-  total: number;
-  price: number;
   amount: number;
   product: Product;
 
@@ -36,22 +34,29 @@ export class AddEditComponent implements OnInit {
     this.addEditForm = new FormGroup({
       orderId: new FormControl(''),
       orderDate: new FormControl(this.today, Validators.required),
-      productId: new FormControl('', Validators.required),
+      // productId: new FormControl('', Validators.required),
       customerId: new FormControl('', Validators.required),
-      amount: new FormControl('', Validators.required),
-      total: new FormControl(''),
+      // amount: new FormControl('', Validators.required),
+      // total: new FormControl(''),
       status: new FormControl(true)
     });
     this.orderSelected = this.orderService.orderSelected;
     if (this.orderSelected) {
+      this.product = this.orderSelected.product;
+      this.amount = this.orderSelected.amount;
       const data = {
-        orderDate: this.orderSelected.orderDate, amount: this.orderSelected.amount, total: this.orderSelected.total,
-        status: (this.orderSelected.status === 'Y' ? true : false), productId: this.orderSelected.product,
-        customerId: this.orderSelected.customer, orderId: this.orderSelected.orderId
+        orderDate: this.orderSelected.orderDate,
+        amount: this.orderSelected.amount,
+        total: this.orderSelected.total,
+        status: (this.orderSelected.status === 'Y' ? true : false),
+        productId: this.orderSelected.product,
+        customerId: this.orderSelected.customer,
+        orderId: this.orderSelected.orderId
       };
       this.addEditForm.patchValue({
         ...data, orderDate: new Date(data.orderDate)
       });
+
     }
   }
 
@@ -61,8 +66,8 @@ export class AddEditComponent implements OnInit {
         let data = this.addEditForm.getRawValue();
         data = {
           orderId: data.orderId, orderDate: data.orderDate.toISOString(),
-          product: { productId: data.productId.productId }, customer: { customerId: data.customerId.customerId },
-          amount: data.amount, status: (data.status === true ? 'Y' : 'N')
+          product: { productId: this.product.productId }, customer: { customerId: data.customerId.customerId },
+          amount: this.amount, status: (data.status === true ? 'Y' : 'N')
         };
         this.orderService.updateOrder(data).subscribe(val => {
           if (val['Message'] === 'Success') {
@@ -74,9 +79,9 @@ export class AddEditComponent implements OnInit {
       } else {
         let data = this.addEditForm.getRawValue();
         data = {
-          orderDate: data.orderDate.toISOString(),
-          product: { productId: data.productId.productId }, customer: { customerId: data.customerId.customerId },
-          amount: data.amount, status: (data.status === true ? 'Y' : 'N')
+          orderId: data.orderId, orderDate: data.orderDate.toISOString(),
+          product: { productId: this.product.productId }, customer: { customerId: data.customerId.customerId },
+          amount: this.amount, status: (data.status === true ? 'Y' : 'N')
         };
         console.log('Add', data);
         this.orderService.createOrder(data).subscribe(val => {
@@ -91,6 +96,8 @@ export class AddEditComponent implements OnInit {
               total: '',
               status: true
             });
+            this.product = null;
+            this.amount = null;
           } else {
             this.messageService.add({ severity: 'warn', summary: 'Message', detail: 'Error, Can\'t Create Order.' });
           }
@@ -102,14 +109,14 @@ export class AddEditComponent implements OnInit {
   cancelBtn() {
     if (this.orderSelected) {
       this.addEditForm.patchValue({
-        orderId: '',
-        orderDate: '',
         productId: '',
         customerId: '',
         amount: '',
         total: '',
         status: true
       });
+      this.product = null;
+      this.amount = null;
     } else {
       this.addEditForm.patchValue({
         orderId: '',
@@ -120,6 +127,8 @@ export class AddEditComponent implements OnInit {
         total: '',
         status: true
       });
+      this.product = null;
+      this.amount = null;
     }
   }
 }
