@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MessageModule } from 'primeng/message';
     RouterModule,
     MessagesModule,
     MessageModule,
+    ToastModule,
   ]
 })
 export class AddEditModule { }

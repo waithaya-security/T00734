@@ -1,3 +1,4 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
 <form [formGroup]="addEditForm">
     <div class="p-grid">
         <div class="p-col">
@@ -21,8 +22,8 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <p-dropdown formControlName="productId" [options]="productService.productList" optionLabel="productName"
-                    placeholder="Select Product"></p-dropdown>&nbsp;
+                <p-dropdown [options]="productService.productList" optionLabel="productName"
+                [(ngModel)]="product" placeholder="Select Product"></p-dropdown>&nbsp;
                 <p-message severity="error" text="Product is required"
                     *ngIf="addEditForm.get('productId').hasError('required')"></p-message>
             </div>
@@ -51,7 +52,7 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <input type="text" pInputText formControlName="amount" />&nbsp;
+                <input type="text" pInputText formControlName="amount" [(ngModel)]="amount"/>&nbsp;
                 <p-message severity="error" text="Amount is required"
                     *ngIf="addEditForm.get('amount').hasError('required')"></p-message>
             </div>
@@ -65,7 +66,7 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <input type="text" pInputText formControlName="total"/>
+                <input type="text" pInputText formControlName="total" disabled="true" [(ngModel)]="amount"/>
             </div>
         </div>
     </div>

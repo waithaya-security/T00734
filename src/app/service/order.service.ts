@@ -30,7 +30,7 @@ export class OrderService {
       );
   }
 
-  delOrder(id) {
+  delOrder(id: number) {
     return this.http
       .delete<any>('workshop-api/api/orders/' + id)
       .pipe(
@@ -39,4 +39,15 @@ export class OrderService {
         })
       );
   }
+
+  updateOrder(order) {
+    return this.http
+      .put<any>('workshop-api/api/orders/', order);
+  }
+
+  createOrder(order) {
+    return this.http
+      .post<any>('workshop-api/api/orders/', order);
+  }
+
 }

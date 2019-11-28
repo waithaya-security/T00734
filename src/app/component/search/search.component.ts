@@ -21,10 +21,10 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.productService.getProduct().subscribe();
     this.searchForm = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      email: new FormControl(),
-      productId: new FormControl()
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      email: new FormControl(''),
+      productId: new FormControl('')
     });
   }
 
