@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
   }
 
   onAdd() {
-    this.orderService.orderSelected = null;
+    this.orderService.orderId = null;
   }
 
 }

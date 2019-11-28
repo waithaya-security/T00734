@@ -22,8 +22,8 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <p-dropdown [options]="productService.productList" optionLabel="productName" [(ngModel)]="product"
-                    [ngModelOptions]="{standalone: true}" placeholder="Select Product"></p-dropdown>&nbsp;
+                <p-dropdown [options]="productList" optionLabel="productName" formControlName="productId"
+                    placeholder="Select Product"></p-dropdown>&nbsp;
                 <p-message severity="error" text="Product is required" *ngIf="!product"></p-message>
             </div>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <p-dropdown formControlName="customerId" [options]="customerService.customerList" optionLabel="fullName"
+                <p-dropdown formControlName="customerId" [options]="customerList" optionLabel="fullName"
                     placeholder="Select Customer"></p-dropdown>&nbsp;
                 <p-message severity="error" text="Customer is required"
                     *ngIf="addEditForm.get('customerId').hasError('required')"></p-message>
@@ -51,7 +51,7 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <input type="text" pInputText [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" />&nbsp;
+                <input type="number" pInputText [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" />&nbsp;
                 <p-message severity="error" text="Amount is required" *ngIf="!amount"></p-message>
             </div>
         </div>
@@ -64,12 +64,13 @@
         </div>
         <div class="p-col">
             <div style="text-align: left;">
-                <input type="text" pInputText disabled="true" [(ngModel)]="product?.price * amount"
+                <input type="text" pInputText disabled="true"
+                    [(ngModel)]="addEditForm.get('productId').value?.price * amount"
                     [ngModelOptions]="{standalone: true}" />
             </div>
         </div>
     </div>
-    <div class="p-grid" *ngIf="orderService.orderSelected">
+    <div class="p-grid" *ngIf="orderService.orderId">
         <div class="p-col">
             <div style="text-align: right;">
                 Status:

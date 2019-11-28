@@ -20,8 +20,8 @@ export class OrderListComponent implements OnInit {
 
   }
 
-  onEdit(e) {
-    this.orderService.orderSelected = e;
+  onEdit(id) {
+    this.orderService.orderId = id;
     this.router.navigate(['/add']);
   }
 

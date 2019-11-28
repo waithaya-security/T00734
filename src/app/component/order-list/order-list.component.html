@@ -17,7 +17,7 @@
             <td>{{order.product['productDesc']}}</td>
             <td>{{order.customer['email']}}</td>
             <td>{{order.customer['tel']}}</td>
-            <td><button pButton type="button" icon="pi pi-pencil" (click)="onEdit(order)"></button>&nbsp;
+            <td><button pButton type="button" icon="pi pi-pencil" (click)="onEdit(order.orderId)"></button>&nbsp;
                 <button pButton type="button" icon="pi pi-trash" (click)="onDel(order.orderId, rowIndex)"></button></td>
         </tr>
     </ng-template>

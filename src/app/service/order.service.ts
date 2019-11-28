@@ -10,6 +10,7 @@ export class OrderService {
   orderList: Order[] = [];
   orderSelected: Order;
   delRespont: any;
+  orderId: number;
   constructor(private http: HttpClient) { }
 
   removeEmpty(obj) {
@@ -50,4 +51,13 @@ export class OrderService {
       .post<any>('workshop-api/api/orders/', order);
   }
 
+  getOrderById(){
+    return this.http
+      .get<Order>('workshop-api/api/orders/' + this.orderId)
+      .pipe(
+        tap(response => {
+          this.orderSelected = response;
+        })
+      );
+  }
 }
